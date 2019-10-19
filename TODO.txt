@@ -1,0 +1,50 @@
+Make all memory holding referenced objects managed by autoptr
+
+Make multi-threaded resource loading
+
+Add GUI skin support with textures, including 3x3 meshes per plane
+Create GUILayout analog to simplify UI processing
+
+Postprocess render system
+Make render stages system work data-driven
+
+Make own shader preprocessor to exclude passing to shader inputs which are under #ifdefs
+Make shaders #include (low prio)
+Make attribute chanels enum (instead of using vertex components from VB as it is now)
+
+Editor undo/redo
+GUI copy/paste
+LOD system
+Static linkage
+simple terrain rendering system
+Grass and trees
+
+Fix window dragging and disable dragging of panels
+Create console
+Fix window margins
+Fix normals when scaling
+Fix importing demon.dae
+Catch mouse leave event and reset pressed buttons on it
+
+Make UI eating mouse/keyboard events
+Load textures relativelly to importing file.
+Import bump map if collada has
+
+Texture tool
+Reflection: fix xml serializers
+GUI::TextArea
+World::SceneNodes
+Scene serializing
+Reflection: methods reflection
+Reflection: binary serializers
+
+Editor gizmos rendering
+
+Clouds rendering
+Improved sky rendering
+
+replace std::map and std::set as stl instances use static fields
+remake engine not to use static members (singletons)
+
+Physical engine
+Script engine
