@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<PostFX name="bloom">
+	<RenderTarget name="temp0" width="50%" height="50%">
+		<Color index="0" format="RGBA8" />
+	</RenderTarget>
+	<RenderTarget name="temp1" width="25%" height="25%">
+		<Color index="0" format="RGBA8" />
+	</RenderTarget>
+	<Shader name="passthrough">
+		<Resource>postFX/passthrough.glsl</Resource>
+	</Shader>
+	<Shader name="downSampleLDR">
+		<Resource>postFX/downSampleLDR.glsl</Resource>
+		<InputValue name="samples" type="vec2" arraySize="16">
+			-0.0029296875 -0.0029296875 -0.0009765625
+			-0.0029296875  0.0009765625 -0.0029296875 0.0029296875 -0.0029296875
+			-0.0029296875 -0.0009765625 -0.0009765625 -0.0009765625 0.0009765625
+			-0.0009765625 0.0029296875 -0.0009765625 -0.0029296875 0.0009765625
+			-0.0009765625 0.0009765625 0.0009765625 0.0009765625 0.0029296875
+			0.0009765625 -0.0029296875 0.0029296875 -0.0009765625 0.0029296875
+			0.0009765625 0.0029296875 0.0029296875 0.0029296875
+		</InputValue>
+	</Shader>
+	<Shader name="bloom">
+		<Resource>postFX/bloom.glsl</Resource>
+		<InputValue name="bloomBlendFactor" type="float">2.5</InputValue>
+	</Shader>
+	<Pass name="downSampleLDR" target="temp1" shader="downSampleLDR">
+		<InputTexture name="colorBuffer">
+			<SceneBuffer content="color" requestFormat="RGBA8"/>
+		</InputTexture>
+	</Pass>
+	<Pass name="ping" target="temp0" shader="passthrough">
+		<InputTexture name="color">
+			<TargetOutput target="temp1" index="0"/>
+		</InputTexture>
+	</Pass>
+	<Pass name="pong" target="temp1" shader="passthrough">
+		<InputTexture name="color">
+			<TargetOutput target="temp0" index="0"/>
+		</InputTexture>
+	</Pass>
+	<Pass name="bloom" target="backbuffer" shader="bloom">
+		<InputTexture name="colorBuffer">
+			<SceneBuffer content="color"/>
+		</InputTexture>
+		<InputTexture name="blurMap">
+			<TargetOutput target="temp1" index="0"/>
+		</InputTexture>
+	</Pass>
+	<Sequence name="bloom">
+		<RunPass name="downSampleLDR"/>
+		<RunPass name="ping"/>
+		<RunPass name="pong"/>
+		<RunPass name="ping"/>
+		<RunPass name="pong"/>
+		<RunPass name="ping"/>
+		<RunPass name="pong"/>
+		<RunPass name="ping"/>
+		<RunPass name="pong"/>
+		<RunPass name="ping"/>
+		<RunPass name="pong"/>
+		<RunPass name="ping"/>
+		<RunPass name="pong"/>
+		<RunPass name="ping"/>
+		<RunPass name="pong"/>
+		<RunPass name="ping"/>
+		<RunPass name="pong"/>
+		<RunPass name="ping"/>
+		<RunPass name="pong"/>
+		<RunPass name="ping"/>
+		<RunPass name="pong"/>
+		<RunPass name="ping"/>
+		<RunPass name="pong"/>
+		<RunPass name="bloom"/>
+	</Sequence>
+</PostFX>

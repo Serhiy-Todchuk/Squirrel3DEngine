@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug_static|Win32">
+      <Configuration>Debug_static</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{04979474-7201-4679-B78D-8AD4B9CFD070}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>SqGUI</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_static|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_static|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)..\Bin\</OutDir>
+    <TargetName>$(ProjectName)D</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_static|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)Lib\</OutDir>
+    <TargetName>$(ProjectName)D</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)..\Bin\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;SQGUI_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\Source; ..\..\..\Externals\include</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);$(SolutionDir)..\Externals\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_static|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_LIB;SQ_STATIC_IMPORT;WIN32;_DEBUG;_WINDOWS;SQGUI_STATIC_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\Source; ..\..\..\Externals\include</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);$(SolutionDir)..\Externals\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;SQGUI_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\Source; ..\..\..\Externals\include</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);$(SolutionDir)..\Externals\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\Externals\src\bitmap.cpp" />
+    <ClCompile Include="..\..\Source\GUI\Button.cpp" />
+    <ClCompile Include="..\..\Source\GUI\Container.cpp" />
+    <ClCompile Include="..\..\Source\GUI\Cursor.cpp" />
+    <ClCompile Include="..\..\Source\GUI\DropDownList.cpp" />
+    <ClCompile Include="..\..\Source\GUI\Edit.cpp" />
+    <ClCompile Include="..\..\Source\GUI\Element.cpp" />
+    <ClCompile Include="..\..\Source\GUI\FloatField.cpp" />
+    <ClCompile Include="..\..\Source\GUI\Foldout.cpp" />
+    <ClCompile Include="..\..\Source\GUI\Font.cpp" />
+    <ClCompile Include="..\..\Source\GUI\IntField.cpp" />
+    <ClCompile Include="..\..\Source\GUI\Label.cpp" />
+    <ClCompile Include="..\..\Source\GUI\List.cpp" />
+    <ClCompile Include="..\..\Source\GUI\Manager.cpp" />
+    <ClCompile Include="..\..\Source\GUI\Menu.cpp" />
+    <ClCompile Include="..\..\Source\GUI\MenuContentSource.cpp" />
+    <ClCompile Include="..\..\Source\GUI\MenuItem.cpp" />
+    <ClCompile Include="..\..\Source\GUI\MovingPoint.cpp" />
+    <ClCompile Include="..\..\Source\GUI\Panel.cpp" />
+    <ClCompile Include="..\..\Source\GUI\Render.cpp" />
+    <ClCompile Include="..\..\Source\GUI\ScrollView.cpp" />
+    <ClCompile Include="..\..\Source\GUI\Separator.cpp" />
+    <ClCompile Include="..\..\Source\GUI\Sizer.cpp" />
+    <ClCompile Include="..\..\Source\GUI\Slider.cpp" />
+    <ClCompile Include="..\..\Source\GUI\Switch.cpp" />
+    <ClCompile Include="..\..\Source\GUI\Window.cpp" />
+    <ClCompile Include="..\..\Source\GUI\WindowsFontGenerator.cpp" />
+    <ClCompile Include="dllmain.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Source\GUI\Bounds2D.h" />
+    <ClInclude Include="..\..\Source\GUI\Button.h" />
+    <ClInclude Include="..\..\Source\GUI\Container.h" />
+    <ClInclude Include="..\..\Source\GUI\Cursor.h" />
+    <ClInclude Include="..\..\Source\GUI\DropDownList.h" />
+    <ClInclude Include="..\..\Source\GUI\Edit.h" />
+    <ClInclude Include="..\..\Source\GUI\Element.h" />
+    <ClInclude Include="..\..\Source\GUI\FloatField.h" />
+    <ClInclude Include="..\..\Source\GUI\Foldout.h" />
+    <ClInclude Include="..\..\Source\GUI\Font.h" />
+    <ClInclude Include="..\..\Source\GUI\IntField.h" />
+    <ClInclude Include="..\..\Source\GUI\Label.h" />
+    <ClInclude Include="..\..\Source\GUI\List.h" />
+    <ClInclude Include="..\..\Source\GUI\Manager.h" />
+    <ClInclude Include="..\..\Source\GUI\Menu.h" />
+    <ClInclude Include="..\..\Source\GUI\MenuContentSource.h" />
+    <ClInclude Include="..\..\Source\GUI\MenuItem.h" />
+    <ClInclude Include="..\..\Source\GUI\MovingPoint.h" />
+    <ClInclude Include="..\..\Source\GUI\Panel.h" />
+    <ClInclude Include="..\..\Source\GUI\Render.h" />
+    <ClInclude Include="..\..\Source\GUI\ScrollView.h" />
+    <ClInclude Include="..\..\Source\GUI\Separator.h" />
+    <ClInclude Include="..\..\Source\GUI\Sizer.h" />
+    <ClInclude Include="..\..\Source\GUI\Slider.h" />
+    <ClInclude Include="..\..\Source\GUI\Switch.h" />
+    <ClInclude Include="..\..\Source\GUI\Window.h" />
+    <ClInclude Include="..\..\Source\GUI\WindowsFontGenerator.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SqCommon\SqCommon.vcxproj">
+      <Project>{05bc6573-992c-4551-b617-e2fc97dfe438}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\SqOpenGL\SqOpenGL.vcxproj">
+      <Project>{50da69ac-5aa0-494c-aa7a-77d86d7c5211}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\SqResource\SqResource.vcxproj">
+      <Project>{2431bdf9-e7fe-43a8-a3c9-f2fe3c0c8cbe}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

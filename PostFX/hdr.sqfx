@@ -1,0 +1,195 @@
+<?xml version="1.0"?>
+<PostFX name="hdr">
+	<RenderTarget name="brightPassSmall" width="50%" height="50%">
+		<Color index="0" format="RGBA16F" />
+	</RenderTarget>
+	<RenderTarget name="XbrightPassSmallBlur" width="25%" height="25%">
+		<Color index="0" format="RGBA16F" />
+	</RenderTarget>
+	<RenderTarget name="YbrightPassSmallBlur" width="25%" height="25%">
+		<Color index="0" format="RGBA16F" />
+	</RenderTarget>
+	<RenderTarget name="luminance0" width="64" height="64">
+		<Color index="0" format="RGBA16F" />
+	</RenderTarget>
+	<RenderTarget name="luminance1" width="16" height="16">
+		<Color index="0" format="RGBA16F" />
+	</RenderTarget>
+	<RenderTarget name="luminance2" width="4" height="4">
+		<Color index="0" format="RGBA16F" />
+	</RenderTarget>
+	<RenderTarget name="luminanceSwap0" width="1" height="1">
+		<Color index="0" format="RGBA16F" />
+	</RenderTarget>
+	<RenderTarget name="luminanceSwap1" width="1" height="1">
+		<Color index="0" format="RGBA16F" />
+	</RenderTarget>
+	<RenderTarget name="finalLuminance" width="1" height="1">
+		<Color index="0" format="RGBA16F" />
+	</RenderTarget>
+
+	<Shader name="brightPass">
+		<Resource>postFX/hdr/brightPass.glsl</Resource>
+		<InputValue name="samples" type="vec2" arraySize="16">
+			-0.0029296875 -0.0029296875 -0.0009765625 -0.0029296875  0.0009765625 -0.0029296875 0.0029296875 -0.0029296875
+			-0.0029296875 -0.0009765625 -0.0009765625 -0.0009765625 0.0009765625 -0.0009765625 0.0029296875 -0.0009765625
+			-0.0029296875 0.0009765625 -0.0009765625 0.0009765625 0.0009765625 0.0009765625 0.0029296875 0.0009765625
+			-0.0029296875 0.0029296875 -0.0009765625 0.0029296875	0.0009765625 0.0029296875 0.0029296875 0.0029296875
+		</InputValue>
+		<InputValue name="key" type="float">1.5</InputValue>
+	</Shader>
+	<Shader name="xBlur">
+		<Resource>postFX/xBlur.glsl</Resource>
+		<InputValue name="blurness" type="float">0.25</InputValue>
+	</Shader>
+	<Shader name="yBlur">
+		<Resource>postFX/yBlur.glsl</Resource>
+		<InputValue name="blurness" type="float">0.25</InputValue>
+	</Shader>
+	<Shader name="toneMapping">
+		<Resource>postFX/hdr/toneMapping.glsl</Resource>
+		<InputValue name="exposure" type="float">2.0</InputValue>
+	</Shader>
+	<Shader name="downLumLog">
+		<Resource>postFX/hdr/downLumLog.glsl</Resource>
+		<InputValue name="samples" type="vec2" arraySize="9">
+			-0.0052083335 -0.0052083335 -0.0052083335 0.0 -0.0052083335 0.0052083335 0.0 -0.0052083335 0.0
+			0.0 0.0 0.0052083335 0.0052083335 -0.0052083335 0.0052083335 0.0 0.0052083335 0.0052083335
+		</InputValue>
+	</Shader>
+	<Shader name="downLum">
+		<Resource>postFX/hdr/downLum.glsl</Resource>
+	</Shader>
+	<Shader name="downLumExp">
+		<Resource>postFX/hdr/downLumExp.glsl</Resource>
+		<InputValue name="samples" type="vec2" arraySize="16">
+			-0.375 -0.375 -0.125 -0.375 0.125 -0.375 0.375 -0.375 -0.375  -0.125 -0.125 -0.125 0.125 -0.125 0.375 -0.125 
+			-0.375 0.125 -0.125 0.125 0.125 0.125 0.375 0.125 -0.375 0.375 -0.125 0.375 0.125 0.375 0.375 0.375			
+		</InputValue>
+	</Shader>
+	<Shader name="adaptLum">
+		<Resource>postFX/hdr/adaptLum.glsl</Resource>
+	</Shader>
+
+	<Pass name="brightPass0" target="brightPassSmall" shader="brightPass">
+		<InputTexture name="DownSampler">
+			<SceneBuffer content="color" requestFormat="RGBA16F"/>
+		</InputTexture>
+		<InputTexture name="ALumSampler">
+			<TargetOutput target="luminanceSwap1" index="0"/>
+		</InputTexture>
+	</Pass>
+	<Pass name="brightPass1" target="brightPassSmall" shader="brightPass">
+		<InputTexture name="DownSampler">
+			<SceneBuffer content="color" requestFormat="RGBA16F"/>
+		</InputTexture>
+		<InputTexture name="ALumSampler">
+			<TargetOutput target="luminanceSwap0" index="0"/>
+		</InputTexture>
+	</Pass>
+	<Pass name="downLumLog" target="luminance0" shader="downLumLog">
+		<InputTexture name="DownSampler">
+			<SceneBuffer content="color" requestFormat="RGBA16F"/>
+		</InputTexture>
+	</Pass>
+	<Pass name="downLum" target="luminance1" shader="downLum">
+		<InputTexture name="DownSampler">
+			<TargetOutput target="luminance0" index="0"/>
+		</InputTexture>
+		<InputValue name="samples" type="vec2" arraySize="16">
+			-0.0234375 -0.0234375 -0.0078125 -0.0234375 0.0078125 -0.0234375 0.0234375 -0.0234375
+			-0.0234375 -0.0078125 -0.0078125 -0.0078125 0.0078125 -0.0078125 0.0234375 -0.0078125
+			-0.0234375 0.0078125 -0.0078125 0.0078125 0.0078125 0.0078125 0.0234375 0.0078125
+			-0.0234375 0.0234375 -0.0078125 0.0234375 0.0078125 0.0234375 0.0234375 0.0234375
+		</InputValue>
+	</Pass>
+	<Pass name="downLum2" target="luminance2" shader="downLum">
+		<InputTexture name="DownSampler">
+			<TargetOutput target="luminance1" index="0"/>
+		</InputTexture>
+		<InputValue name="samples" type="vec2" arraySize="16">
+			-0.09375 -0.09375 -0.03125 -0.09375 0.03125 -0.09375 0.09375 -0.09375 -0.09375 -0.03125
+			-0.03125 -0.03125 0.03125 -0.03125 0.09375 -0.03125 -0.09375 0.03125 -0.03125 0.03125
+			0.03125 0.03125 0.09375 0.03125 -0.09375 0.09375 -0.03125 0.09375 0.03125 0.09375 0.09375 0.09375
+		</InputValue>
+	</Pass>
+	<Pass name="downLumExp" target="finalLuminance" shader="downLumExp">
+		<InputTexture name="DownSampler">
+			<TargetOutput target="luminance2" index="0"/>
+		</InputTexture>
+	</Pass>
+	
+	<Pass name="downLumAdapt0" target="luminanceSwap1" shader="adaptLum">
+		<InputTexture name="CurLum">
+			<TargetOutput target="finalLuminance" index="0"/>
+		</InputTexture>
+		<InputTexture name="AdaptLum">
+			<TargetOutput target="luminanceSwap0" index="0"/>
+		</InputTexture>
+	</Pass>
+	<Pass name="downLumAdapt1" target="luminanceSwap0" shader="adaptLum">
+		<InputTexture name="CurLum">
+			<TargetOutput target="finalLuminance" index="0"/>
+		</InputTexture>
+		<InputTexture name="AdaptLum">
+			<TargetOutput target="luminanceSwap1" index="0"/>
+		</InputTexture>
+	</Pass>
+	
+	<Pass name="blurX" target="XbrightPassSmallBlur" shader="xBlur">
+		<InputTexture name="BlurXSampler">
+			<TargetOutput target="brightPassSmall" index="0"/>
+		</InputTexture>
+	</Pass>
+	<Pass name="blurY" target="YbrightPassSmallBlur" shader="yBlur">
+		<InputTexture name="BlurYSampler">
+			<TargetOutput target="XbrightPassSmallBlur" index="0"/>
+		</InputTexture>
+	</Pass>
+	
+	<Pass name="toneMap0" target="backbuffer" shader="toneMapping">
+		<InputTexture name="srcImage">
+			<SceneBuffer content="color" requestFormat="RGBA16F"/>
+		</InputTexture>
+		<InputTexture name="blurYImage">
+			<TargetOutput target="YbrightPassSmallBlur" index="0"/>
+		</InputTexture>
+		<InputTexture name="adaptLumImage">
+			<TargetOutput target="luminanceSwap1" index="0"/>
+		</InputTexture>
+	</Pass>
+	<Pass name="toneMap1" target="backbuffer" shader="toneMapping">
+		<InputTexture name="srcImage">
+			<SceneBuffer content="color" requestFormat="RGBA16F"/>
+		</InputTexture>
+		<InputTexture name="blurYImage">
+			<TargetOutput target="YbrightPassSmallBlur" index="0"/>
+		</InputTexture>
+		<InputTexture name="adaptLumImage">
+			<TargetOutput target="luminanceSwap0" index="0"/>
+		</InputTexture>
+	</Pass>
+
+	<Sequence name="seqOdd">
+		<RunPass name="downLumLog"/>
+		<RunPass name="downLum"/>
+		<RunPass name="downLum2"/>
+		<RunPass name="downLumExp"/>
+		<RunPass name="downLumAdapt0"/>
+		<RunPass name="brightPass0"/>
+		<RunPass name="blurX"/>
+		<RunPass name="blurY"/>
+		<RunPass name="toneMap0"/>
+	</Sequence>
+	<Sequence name="seqEven">
+		<RunPass name="downLumLog"/>
+		<RunPass name="downLum"/>
+		<RunPass name="downLum2"/>
+		<RunPass name="downLumExp"/>
+		<RunPass name="downLumAdapt1"/>
+		<RunPass name="brightPass1"/>
+		<RunPass name="blurX"/>
+		<RunPass name="blurY"/>
+		<RunPass name="toneMap1"/>
+	</Sequence>
+</PostFX>

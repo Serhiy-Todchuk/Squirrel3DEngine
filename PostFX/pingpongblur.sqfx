@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<PostFX name="pingpongblur">
+	<RenderTarget name="temp0" width="100%" height="100%">
+		<Color index="0" format="RGBA8" />
+	</RenderTarget>
+	<RenderTarget name="temp1" width="50%" height="50%">
+		<Color index="0" format="RGBA8" />
+	</RenderTarget>
+	<RenderTarget name="temp2" width="25%" height="25%">
+		<Color index="0" format="RGBA8" />
+	</RenderTarget>
+	<Shader name="passthrough">
+		<Resource>postFX/passthrough.glsl</Resource>
+	</Shader>
+	<Pass name="first" target="temp1" shader="passthrough">
+		<InputTexture name="color">
+			<SceneBuffer content="color" requestFormat="RGBA8"/>
+		</InputTexture>
+	</Pass>
+	<Pass name="ping" target="temp0" shader="passthrough">
+		<InputTexture name="color">
+			<TargetOutput target="temp1" index="0"/>
+		</InputTexture>
+	</Pass>
+	<Pass name="pong" target="temp1" shader="passthrough">
+		<InputTexture name="color">
+			<TargetOutput target="temp0" index="0"/>
+		</InputTexture>
+	</Pass>
+	<Pass name="ping2" target="temp2" shader="passthrough">
+		<InputTexture name="color">
+			<TargetOutput target="temp1" index="0"/>
+		</InputTexture>
+	</Pass>
+	<Pass name="pong2" target="temp1" shader="passthrough">
+		<InputTexture name="color">
+			<TargetOutput target="temp2" index="0"/>
+		</InputTexture>
+	</Pass>
+	<Pass name="final" target="backbuffer" shader="passthrough">
+		<InputTexture name="color">
+			<TargetOutput target="temp2" index="0"/>
+		</InputTexture>
+	</Pass>
+	<Sequence name="pingpongblur">
+		<RunPass name="first"/>
+		<RunPass name="ping"/>
+		<RunPass name="pong"/>
+		<RunPass name="ping"/>
+		<RunPass name="pong"/>
+		<RunPass name="ping"/>
+		<RunPass name="pong"/>
+		<RunPass name="ping2"/>
+		<RunPass name="pong2"/>
+		<RunPass name="ping2"/>
+		<RunPass name="pong2"/>
+		<RunPass name="ping2"/>
+		<RunPass name="pong2"/>
+		<RunPass name="final"/>
+	</Sequence>
+</PostFX>

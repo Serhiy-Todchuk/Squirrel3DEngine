@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug_static|Win32">
+      <Configuration>Debug_static</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{05BC6573-992C-4551-B617-E2FC97DFE438}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>SqCommon</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_static|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_static|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)..\Bin\</OutDir>
+    <TargetName>$(ProjectName)D</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_static|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)Lib\</OutDir>
+    <TargetName>$(ProjectName)D</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)..\Bin\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;SQCOMMON;SQCOMMON_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\Source; ..\..\..\Externals\include</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);$(SolutionDir)..\Externals\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>zlib.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>libcmt.lib</IgnoreSpecificDefaultLibraries>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_static|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_LIB;SQ_STATIC_IMPORT;WIN32;_DEBUG;_WINDOWS;SQCOMMON;SQCOMMON_STATIC_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\Source; ..\..\..\Externals\include</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);$(SolutionDir)..\Externals\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>zlib.lib;winmm.lib;kernel32.lib;user32.lib;gdi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>libcmt.lib</IgnoreSpecificDefaultLibraries>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;SQCOMMON;SQCOMMON_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\Source; ..\..\..\Externals\include</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);$(SolutionDir)..\Externals\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>zlib.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>libcmt.lib</IgnoreSpecificDefaultLibraries>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\Externals\include\pugixml\pugixml.cpp" />
+    <ClCompile Include="..\..\Source\Audio\IAudio.cpp" />
+    <ClCompile Include="..\..\Source\Common\Context.cpp" />
+    <ClCompile Include="..\..\Source\Common\Data.cpp" />
+    <ClCompile Include="..\..\Source\Common\DynamicLibrary.cpp" />
+    <ClCompile Include="..\..\Source\Common\Input.cpp" />
+    <ClCompile Include="..\..\Source\Common\Log.cpp" />
+    <ClCompile Include="..\..\Source\Common\Mutex.cpp" />
+    <ClCompile Include="..\..\Source\Common\Notification.cpp" />
+    <ClCompile Include="..\..\Source\Common\Platform.cpp" />
+    <ClCompile Include="..\..\Source\Common\Settings.cpp" />
+    <ClCompile Include="..\..\Source\Common\Thread.cpp" />
+    <ClCompile Include="..\..\Source\Common\TimeCounter.cpp" />
+    <ClCompile Include="..\..\Source\Common\Window.cpp" />
+    <ClCompile Include="..\..\Source\Common\WindowManager.cpp" />
+    <ClCompile Include="..\..\Source\Common\Windows\WindowsClipboard.cpp" />
+    <ClCompile Include="..\..\Source\Common\Windows\WindowsMutex.cpp" />
+    <ClCompile Include="..\..\Source\Common\Windows\WindowsThread.cpp" />
+    <ClCompile Include="..\..\Source\Common\Windows\WindowsWindow.cpp" />
+    <ClCompile Include="..\..\Source\Common\Windows\WindowsWindowManager.cpp" />
+    <ClCompile Include="..\..\Source\FileSystem\FileStorage.cpp" />
+    <ClCompile Include="..\..\Source\FileSystem\FileStorageFactory.cpp" />
+    <ClCompile Include="..\..\Source\FileSystem\Folder.cpp" />
+    <ClCompile Include="..\..\Source\FileSystem\Path.cpp" />
+    <ClCompile Include="..\..\Source\FileSystem\ZipFileStorage.cpp" />
+    <ClCompile Include="..\..\Source\Math\AABB.cpp" />
+    <ClCompile Include="..\..\Source\Math\GeometryTools.cpp" />
+    <ClCompile Include="..\..\Source\Math\mat2.cpp" />
+    <ClCompile Include="..\..\Source\Math\mat3.cpp" />
+    <ClCompile Include="..\..\Source\Math\mat4.cpp" />
+    <ClCompile Include="..\..\Source\Math\PerlinNoise.cpp" />
+    <ClCompile Include="..\..\Source\Math\Plane.cpp" />
+    <ClCompile Include="..\..\Source\Math\quat.cpp" />
+    <ClCompile Include="..\..\Source\Math\vec2.cpp" />
+    <ClCompile Include="..\..\Source\Math\vec3.cpp" />
+    <ClCompile Include="..\..\Source\Math\vec4.cpp" />
+    <ClCompile Include="..\..\Source\Reflection\AtomicWrapper.cpp" />
+    <ClCompile Include="..\..\Source\Reflection\BinDeserializer.cpp" />
+    <ClCompile Include="..\..\Source\Reflection\BinSerializer.cpp" />
+    <ClCompile Include="..\..\Source\Reflection\CollectionWrapper.cpp" />
+    <ClCompile Include="..\..\Source\Reflection\Object.cpp" />
+    <ClCompile Include="..\..\Source\Reflection\Serializable.cpp" />
+    <ClCompile Include="..\..\Source\Reflection\XMLDeserializer.cpp" />
+    <ClCompile Include="..\..\Source\Reflection\XMLSerializer.cpp" />
+    <ClCompile Include="..\..\Source\Render\Camera.cpp" />
+    <ClCompile Include="..\..\Source\Render\IFrameBuffer.cpp" />
+    <ClCompile Include="..\..\Source\Render\Image.cpp" />
+    <ClCompile Include="..\..\Source\Render\IndexBuffer.cpp" />
+    <ClCompile Include="..\..\Source\Render\IProgram.cpp" />
+    <ClCompile Include="..\..\Source\Render\IRender.cpp" />
+    <ClCompile Include="..\..\Source\Render\ITexture.cpp" />
+    <ClCompile Include="..\..\Source\Render\Light.cpp" />
+    <ClCompile Include="..\..\Source\Render\Material.cpp" />
+    <ClCompile Include="..\..\Source\Render\RenderQueue.cpp" />
+    <ClCompile Include="..\..\Source\Render\Uniform.cpp" />
+    <ClCompile Include="..\..\Source\Render\Utils.cpp" />
+    <ClCompile Include="..\..\Source\Render\VertexBuffer.cpp" />
+    <ClCompile Include="dllmain.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Source\Audio\IAudio.h" />
+    <ClInclude Include="..\..\Source\Audio\IBuffer.h" />
+    <ClInclude Include="..\..\Source\Audio\ISource.h" />
+    <ClInclude Include="..\..\Source\Common\BufferArray.h" />
+    <ClInclude Include="..\..\Source\Common\common.h" />
+    <ClInclude Include="..\..\Source\Common\Context.h" />
+    <ClInclude Include="..\..\Source\Common\Data.h" />
+    <ClInclude Include="..\..\Source\Common\DataMap.h" />
+    <ClInclude Include="..\..\Source\Common\DestructionPool.h" />
+    <ClInclude Include="..\..\Source\Common\DynamicLibrary.h" />
+    <ClInclude Include="..\..\Source\Common\HashString.h" />
+    <ClInclude Include="..\..\Source\Common\IDMap.h" />
+    <ClInclude Include="..\..\Source\Common\Input.h" />
+    <ClInclude Include="..\..\Source\Common\Log.h" />
+    <ClInclude Include="..\..\Source\Common\LookAtObject.h" />
+    <ClInclude Include="..\..\Source\Common\macros.h" />
+    <ClInclude Include="..\..\Source\Common\Mutex.h" />
+    <ClInclude Include="..\..\Source\Common\Notification.h" />
+    <ClInclude Include="..\..\Source\Common\Platform.h" />
+    <ClInclude Include="..\..\Source\Common\Settings.h" />
+    <ClInclude Include="..\..\Source\Common\StringUtils.h" />
+    <ClInclude Include="..\..\Source\Common\Thread.h" />
+    <ClInclude Include="..\..\Source\Common\TimeCounter.h" />
+    <ClInclude Include="..\..\Source\Common\tuple.h" />
+    <ClInclude Include="..\..\Source\Common\types.h" />
+    <ClInclude Include="..\..\Source\Common\Window.h" />
+    <ClInclude Include="..\..\Source\Common\WindowManager.h" />
+    <ClInclude Include="..\..\Source\Common\Windows\WindowsClipboard.h" />
+    <ClInclude Include="..\..\Source\Common\Windows\WindowsMutex.h" />
+    <ClInclude Include="..\..\Source\Common\Windows\WindowsThread.h" />
+    <ClInclude Include="..\..\Source\Common\Windows\WindowsWindow.h" />
+    <ClInclude Include="..\..\Source\Common\Windows\WindowsWindowManager.h" />
+    <ClInclude Include="..\..\Source\FileSystem\FileStorage.h" />
+    <ClInclude Include="..\..\Source\FileSystem\FileStorageFactory.h" />
+    <ClInclude Include="..\..\Source\FileSystem\Folder.h" />
+    <ClInclude Include="..\..\Source\FileSystem\Path.h" />
+    <ClInclude Include="..\..\Source\FileSystem\ZipFileStorage.h" />
+    <ClInclude Include="..\..\Source\Math\AABB.h" />
+    <ClInclude Include="..\..\Source\Math\BasicUtils.h" />
+    <ClInclude Include="..\..\Source\Math\GeometryTools.h" />
+    <ClInclude Include="..\..\Source\Math\mat2.h" />
+    <ClInclude Include="..\..\Source\Math\mat3.h" />
+    <ClInclude Include="..\..\Source\Math\mat4.h" />
+    <ClInclude Include="..\..\Source\Math\mathTypes.h" />
+    <ClInclude Include="..\..\Source\Math\PerlinNoise.h" />
+    <ClInclude Include="..\..\Source\Math\Plane.h" />
+    <ClInclude Include="..\..\Source\Math\quat.h" />
+    <ClInclude Include="..\..\Source\Math\QuatSlerper.h" />
+    <ClInclude Include="..\..\Source\Math\vec2.h" />
+    <ClInclude Include="..\..\Source\Math\vec3.h" />
+    <ClInclude Include="..\..\Source\Math\vec4.h" />
+    <ClInclude Include="..\..\Source\Reflection\AtomicWrapper.h" />
+    <ClInclude Include="..\..\Source\Reflection\BinDeserializer.h" />
+    <ClInclude Include="..\..\Source\Reflection\BinSerializer.h" />
+    <ClInclude Include="..\..\Source\Reflection\CollectionWrapper.h" />
+    <ClInclude Include="..\..\Source\Reflection\DataWriter.h" />
+    <ClInclude Include="..\..\Source\Reflection\Deserializer.h" />
+    <ClInclude Include="..\..\Source\Reflection\EnumWrapper.h" />
+    <ClInclude Include="..\..\Source\Reflection\Object.h" />
+    <ClInclude Include="..\..\Source\Reflection\RawData.h" />
+    <ClInclude Include="..\..\Source\Reflection\Serializable.h" />
+    <ClInclude Include="..\..\Source\Reflection\Serializer.h" />
+    <ClInclude Include="..\..\Source\Reflection\XMLCommon.h" />
+    <ClInclude Include="..\..\Source\Reflection\XMLDeserializer.h" />
+    <ClInclude Include="..\..\Source\Reflection\XMLSerializer.h" />
+    <ClInclude Include="..\..\Source\Render\Camera.h" />
+    <ClInclude Include="..\..\Source\Render\IBuffer.h" />
+    <ClInclude Include="..\..\Source\Render\IContextObject.h" />
+    <ClInclude Include="..\..\Source\Render\IFrameBuffer.h" />
+    <ClInclude Include="..\..\Source\Render\Image.h" />
+    <ClInclude Include="..\..\Source\Render\IndexBuffer.h" />
+    <ClInclude Include="..\..\Source\Render\IProgram.h" />
+    <ClInclude Include="..\..\Source\Render\IRender.h" />
+    <ClInclude Include="..\..\Source\Render\IRenderable.h" />
+    <ClInclude Include="..\..\Source\Render\ITexture.h" />
+    <ClInclude Include="..\..\Source\Render\Light.h" />
+    <ClInclude Include="..\..\Source\Render\Material.h" />
+    <ClInclude Include="..\..\Source\Render\RenderQueue.h" />
+    <ClInclude Include="..\..\Source\Render\Uniform.h" />
+    <ClInclude Include="..\..\Source\Render\Utils.h" />
+    <ClInclude Include="..\..\Source\Render\VertexBuffer.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

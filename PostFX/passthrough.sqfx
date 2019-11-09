@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<PostFX name="passthrough">
+	<Shader name="passthrough">
+		<Resource>postFX/passthrough.glsl</Resource>
+	</Shader>
+	<Pass name="passthrough" target="backbuffer" shader="passthrough">
+		<InputTexture name="color">
+			<SceneBuffer content="color" requestFormat="RGBA8"/>
+		</InputTexture>
+	</Pass>
+	<Sequence name="passthrough">
+		<RunPass name="passthrough"/>
+	</Sequence>
+</PostFX>

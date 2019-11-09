@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!-- Written this effect based on http://www.john-chapman.net/content.php?id=18 --> 
+<PostFX name="lensflare">
+	<RenderTarget name="temp0" width="50%" height="50%">
+		<Color index="0" format="RGBA8" />
+	</RenderTarget>
+	
+	<Shader name="downSampleLDR">
+		<Resource>postFX/downSampleLDR.glsl</Resource>
+		<InputValue name="samples" type="vec2" arraySize="16">
+			-0.0029296875 -0.0029296875 -0.0009765625
+			-0.0029296875  0.0009765625 -0.0029296875 0.0029296875 -0.0029296875
+			-0.0029296875 -0.0009765625 -0.0009765625 -0.0009765625 0.0009765625
+			-0.0009765625 0.0029296875 -0.0009765625 -0.0029296875 0.0009765625
+			-0.0009765625 0.0009765625 0.0009765625 0.0009765625 0.0029296875
+			0.0009765625 -0.0029296875 0.0029296875 -0.0009765625 0.0029296875
+			0.0009765625 0.0029296875 0.0029296875 0.0029296875
+		</InputValue>
+	</Shader>
+	<Shader name="buildFlares">
+		<Resource>postFX/buildFlares.glsl</Resource>
+		<InputValue name="INTENSITY"				type="float" > 0.5 </InputValue>
+		<InputValue name="NSAMPLES"					type="float" > 8 </InputValue>
+		<InputValue name="FLARE_DISPERSAL"			type="float" > 0.2 </InputValue>
+		<InputValue name="FLARE_HALO_WIDTH"			type="float" > 0.01 </InputValue>
+		<InputValue name="FLARE_CHROMA_DISTORTION"	type="vec3"  > 0.01 0.02 0.03 </InputValue>
+	</Shader>
+	
+	<Pass name="downSampleLDR" target="temp0" shader="downSampleLDR">
+		<InputTexture name="colorBuffer">
+			<SceneBuffer content="sceneColor" requestFormat="RGBA8"/>
+		</InputTexture>
+	</Pass>
+	<Pass name="buildFlares" target="backbuffer" shader="buildFlares">
+		<InputTexture name="TEXTURE">
+			<TargetOutput target="temp0" index="0"/>
+		</InputTexture>
+		<InputTexture name="colorBuffer">
+			<SceneBuffer content="color" requestFormat="RGBA8"/>
+		</InputTexture>
+		<InputTexture name="lensDecal">
+			<Resource>lensdirt_highc.png</Resource>
+		</InputTexture>
+	</Pass>
+
+	<Sequence name="lensflare">
+		<RunPass name="downSampleLDR"/>
+		<RunPass name="buildFlares"/>
+	</Sequence>
+</PostFX>

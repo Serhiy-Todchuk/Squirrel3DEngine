@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<PostFX name="sepia">
+	<Shader name="sepia">
+		<Resource>postFX/sepia.glsl</Resource>
+	</Shader>
+	<Pass name="sepia" target="backbuffer" shader="sepia">
+		<InputTexture name="image">
+			<SceneBuffer content="color" requestFormat="RGBA8"/>
+		</InputTexture>
+	</Pass>
+	<Sequence name="sepia">
+		<RunPass name="sepia"/>
+	</Sequence>
+</PostFX>

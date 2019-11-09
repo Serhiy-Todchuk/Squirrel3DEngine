@@ -1,0 +1,407 @@
+<?xml version="1.0"?>
+<Object Name="SceneObjects" Class="CollectionWrapper">
+	<Object Name="fire" Class="World::SceneObject">
+		<Object Name="Behaviours" Class="CollectionWrapper" />
+		<Object Name="Enabled" Class="AtomicWrapper">1</Object>
+		<Object Name="Name" Class="AtomicWrapper">fire</Object>
+		<Object Name="Position" Class="AtomicWrapper" ValuesNum="3">
+			<Value>0</Value>
+			<Value>0</Value>
+			<Value>0</Value>
+		</Object>
+		<Object Name="Rotation" Class="AtomicWrapper" ValuesNum="4">
+			<Value>0</Value>
+			<Value>0</Value>
+			<Value>0</Value>
+			<Value>1</Value>
+		</Object>
+		<Object Name="Scale" Class="AtomicWrapper" ValuesNum="3">
+			<Value>1</Value>
+			<Value>1</Value>
+			<Value>1</Value>
+		</Object>
+		<Object Name="SceneObjects" Class="CollectionWrapper">
+			<Object Name="campfireSound" Class="World::SoundSource">
+				<Object Name="Behaviours" Class="CollectionWrapper" />
+				<Object Name="ConeDirection" Class="AtomicWrapper" ValuesNum="3">
+					<Value>0</Value>
+					<Value>0</Value>
+					<Value>0</Value>
+				</Object>
+				<Object Name="ConeInnerAngle" Class="AtomicWrapper">360</Object>
+				<Object Name="ConeOuterAngle" Class="AtomicWrapper">360</Object>
+				<Object Name="ConeOuterGain" Class="AtomicWrapper">1</Object>
+				<Object Name="Enabled" Class="AtomicWrapper">1</Object>
+				<Object Name="Gain" Class="AtomicWrapper">1</Object>
+				<Object Name="Loop" Class="AtomicWrapper">1</Object>
+				<Object Name="MaxRadius" Class="AtomicWrapper">40</Object>
+				<Object Name="Name" Class="AtomicWrapper">campfireSound</Object>
+				<Object Name="Pitch" Class="AtomicWrapper">1</Object>
+				<Object Name="PlayAutomatically" Class="AtomicWrapper">1</Object>
+				<Object Name="Position" Class="AtomicWrapper" ValuesNum="3">
+					<Value>0</Value>
+					<Value>0</Value>
+					<Value>0</Value>
+				</Object>
+				<Object Name="RefRadius" Class="AtomicWrapper">5</Object>
+				<Object Name="Rotation" Class="AtomicWrapper" ValuesNum="4">
+					<Value>0</Value>
+					<Value>0</Value>
+					<Value>0</Value>
+					<Value>1</Value>
+				</Object>
+				<Object Name="Scale" Class="AtomicWrapper" ValuesNum="3">
+					<Value>1</Value>
+					<Value>1</Value>
+					<Value>1</Value>
+				</Object>
+				<Object Name="SceneObjects" Class="CollectionWrapper" />
+				<Object Name="SoundName" Class="AtomicWrapper">campfire.wav</Object>
+			</Object>
+			<Object Name="fireLight" Class="World::Light">
+				<Object Name="Ambient" Class="AtomicWrapper" ValuesNum="4">
+					<Value>0</Value>
+					<Value>0</Value>
+					<Value>0</Value>
+					<Value>0</Value>
+				</Object>
+				<Object Name="Behaviours" Class="CollectionWrapper" />
+				<Object Name="Diffuse" Class="AtomicWrapper" ValuesNum="4">
+					<Value>250</Value>
+					<Value>127</Value>
+					<Value>4</Value>
+					<Value>255</Value>
+				</Object>
+				<Object Name="Enabled" Class="AtomicWrapper">1</Object>
+				<Object Name="InnerSpotAngle" Class="AtomicWrapper">80</Object>
+				<Object Name="LightType" Class="AtomicWrapper">1</Object>
+				<Object Name="Name" Class="AtomicWrapper">fireLight</Object>
+				<Object Name="OuterSpotAngle" Class="AtomicWrapper">90</Object>
+				<Object Name="Position" Class="AtomicWrapper" ValuesNum="3">
+					<Value>0</Value>
+					<Value>0</Value>
+					<Value>0</Value>
+				</Object>
+				<Object Name="Radius" Class="AtomicWrapper">12</Object>
+				<Object Name="Rotation" Class="AtomicWrapper" ValuesNum="4">
+					<Value>0</Value>
+					<Value>0</Value>
+					<Value>0</Value>
+					<Value>1</Value>
+				</Object>
+				<Object Name="Scale" Class="AtomicWrapper" ValuesNum="3">
+					<Value>1</Value>
+					<Value>1</Value>
+					<Value>1</Value>
+				</Object>
+				<Object Name="SceneObjects" Class="CollectionWrapper" />
+				<Object Name="Shadow" Class="AtomicWrapper">1</Object>
+				<Object Name="Specular" Class="AtomicWrapper" ValuesNum="4">
+					<Value>250</Value>
+					<Value>127</Value>
+					<Value>4</Value>
+					<Value>255</Value>
+				</Object>
+				<Object Name="TransformLight" Class="AtomicWrapper">1</Object>
+			</Object>
+			<Object Name="smoke" Class="World::ParticleSystem">
+				<Object Name="AnimColor1" Class="AtomicWrapper" ValuesNum="4">
+					<Value>84</Value>
+					<Value>84</Value>
+					<Value>84</Value>
+					<Value>0</Value>
+				</Object>
+				<Object Name="AnimColor2" Class="AtomicWrapper" ValuesNum="4">
+					<Value>99</Value>
+					<Value>99</Value>
+					<Value>99</Value>
+					<Value>88</Value>
+				</Object>
+				<Object Name="AnimColor3" Class="AtomicWrapper" ValuesNum="4">
+					<Value>141</Value>
+					<Value>141</Value>
+					<Value>141</Value>
+					<Value>136</Value>
+				</Object>
+				<Object Name="AnimColor4" Class="AtomicWrapper" ValuesNum="4">
+					<Value>211</Value>
+					<Value>211</Value>
+					<Value>211</Value>
+					<Value>77</Value>
+				</Object>
+				<Object Name="AnimColor5" Class="AtomicWrapper" ValuesNum="4">
+					<Value>255</Value>
+					<Value>255</Value>
+					<Value>255</Value>
+					<Value>0</Value>
+				</Object>
+				<Object Name="AnimateColors" Class="AtomicWrapper">1</Object>
+				<Object Name="Behaviours" Class="CollectionWrapper" />
+				<Object Name="Dumping" Class="AtomicWrapper">1</Object>
+				<Object Name="EmissionElipsoid" Class="AtomicWrapper" ValuesNum="3">
+					<Value>0.75</Value>
+					<Value>0.3</Value>
+					<Value>0.75</Value>
+				</Object>
+				<Object Name="EmissionRange" Class="AtomicWrapper" ValuesNum="2">
+					<Value>20</Value>
+					<Value>20</Value>
+				</Object>
+				<Object Name="Emit" Class="AtomicWrapper">1</Object>
+				<Object Name="Enabled" Class="AtomicWrapper">1</Object>
+				<Object Name="EnergyRange" Class="AtomicWrapper" ValuesNum="2">
+					<Value>6</Value>
+					<Value>6</Value>
+				</Object>
+				<Object Name="Force" Class="AtomicWrapper" ValuesNum="3">
+					<Value>0</Value>
+					<Value>0</Value>
+					<Value>0</Value>
+				</Object>
+				<Object Name="MaxParticlesNum" Class="AtomicWrapper">4000</Object>
+				<Object Name="Name" Class="AtomicWrapper">smoke</Object>
+				<Object Name="Position" Class="AtomicWrapper" ValuesNum="3">
+					<Value>0</Value>
+					<Value>0</Value>
+					<Value>0</Value>
+				</Object>
+				<Object Name="RandomForce" Class="AtomicWrapper" ValuesNum="3">
+					<Value>0</Value>
+					<Value>0</Value>
+					<Value>0</Value>
+				</Object>
+				<Object Name="RenderWay" Class="AtomicWrapper">1</Object>
+				<Object Name="Rotate" Class="AtomicWrapper">1</Object>
+				<Object Name="Rotation" Class="AtomicWrapper" ValuesNum="4">
+					<Value>0</Value>
+					<Value>0</Value>
+					<Value>0</Value>
+					<Value>1</Value>
+				</Object>
+				<Object Name="Scale" Class="AtomicWrapper" ValuesNum="3">
+					<Value>1</Value>
+					<Value>1</Value>
+					<Value>1</Value>
+				</Object>
+				<Object Name="SceneObjects" Class="CollectionWrapper" />
+				<Object Name="SizeGrow" Class="AtomicWrapper">0.1</Object>
+				<Object Name="SizeRange" Class="AtomicWrapper" ValuesNum="2">
+					<Value>1.5</Value>
+					<Value>1.5</Value>
+				</Object>
+				<Object Name="StartRndRotation" Class="AtomicWrapper">-20</Object>
+				<Object Name="StartRndVelocity" Class="AtomicWrapper" ValuesNum="3">
+					<Value>0</Value>
+					<Value>0.75</Value>
+					<Value>0</Value>
+				</Object>
+				<Object Name="StartRotation" Class="AtomicWrapper">75</Object>
+				<Object Name="StartVelocity" Class="AtomicWrapper" ValuesNum="3">
+					<Value>0</Value>
+					<Value>1.5</Value>
+					<Value>0</Value>
+				</Object>
+				<Object Name="TextureName" Class="AtomicWrapper">particle.png</Object>
+			</Object>
+			<Object Name="innerCore" Class="World::ParticleSystem">
+				<Object Name="AnimColor1" Class="AtomicWrapper" ValuesNum="4">
+					<Value>166</Value>
+					<Value>16</Value>
+					<Value>1</Value>
+					<Value>0</Value>
+				</Object>
+				<Object Name="AnimColor2" Class="AtomicWrapper" ValuesNum="4">
+					<Value>255</Value>
+					<Value>213</Value>
+					<Value>1</Value>
+					<Value>108</Value>
+				</Object>
+				<Object Name="AnimColor3" Class="AtomicWrapper" ValuesNum="4">
+					<Value>255</Value>
+					<Value>193</Value>
+					<Value>20</Value>
+					<Value>171</Value>
+				</Object>
+				<Object Name="AnimColor4" Class="AtomicWrapper" ValuesNum="4">
+					<Value>166</Value>
+					<Value>35</Value>
+					<Value>1</Value>
+					<Value>51</Value>
+				</Object>
+				<Object Name="AnimColor5" Class="AtomicWrapper" ValuesNum="4">
+					<Value>27</Value>
+					<Value>18</Value>
+					<Value>1</Value>
+					<Value>0</Value>
+				</Object>
+				<Object Name="AnimateColors" Class="AtomicWrapper">1</Object>
+				<Object Name="Behaviours" Class="CollectionWrapper" />
+				<Object Name="Dumping" Class="AtomicWrapper">0.98</Object>
+				<Object Name="EmissionElipsoid" Class="AtomicWrapper" ValuesNum="3">
+					<Value>0.4</Value>
+					<Value>0.1</Value>
+					<Value>0.4</Value>
+				</Object>
+				<Object Name="EmissionRange" Class="AtomicWrapper" ValuesNum="2">
+					<Value>30</Value>
+					<Value>30</Value>
+				</Object>
+				<Object Name="Emit" Class="AtomicWrapper">1</Object>
+				<Object Name="Enabled" Class="AtomicWrapper">1</Object>
+				<Object Name="EnergyRange" Class="AtomicWrapper" ValuesNum="2">
+					<Value>2</Value>
+					<Value>2</Value>
+				</Object>
+				<Object Name="Force" Class="AtomicWrapper" ValuesNum="3">
+					<Value>0</Value>
+					<Value>0</Value>
+					<Value>0</Value>
+				</Object>
+				<Object Name="MaxParticlesNum" Class="AtomicWrapper">4000</Object>
+				<Object Name="Name" Class="AtomicWrapper">innerCore</Object>
+				<Object Name="Position" Class="AtomicWrapper" ValuesNum="3">
+					<Value>0</Value>
+					<Value>0</Value>
+					<Value>0</Value>
+				</Object>
+				<Object Name="RandomForce" Class="AtomicWrapper" ValuesNum="3">
+					<Value>0</Value>
+					<Value>0</Value>
+					<Value>0</Value>
+				</Object>
+				<Object Name="RenderWay" Class="AtomicWrapper">1</Object>
+				<Object Name="Rotate" Class="AtomicWrapper">1</Object>
+				<Object Name="Rotation" Class="AtomicWrapper" ValuesNum="4">
+					<Value>0</Value>
+					<Value>0</Value>
+					<Value>0</Value>
+					<Value>1</Value>
+				</Object>
+				<Object Name="Scale" Class="AtomicWrapper" ValuesNum="3">
+					<Value>1</Value>
+					<Value>1</Value>
+					<Value>1</Value>
+				</Object>
+				<Object Name="SceneObjects" Class="CollectionWrapper" />
+				<Object Name="SizeGrow" Class="AtomicWrapper">-0.3</Object>
+				<Object Name="SizeRange" Class="AtomicWrapper" ValuesNum="2">
+					<Value>2</Value>
+					<Value>2</Value>
+				</Object>
+				<Object Name="StartRndRotation" Class="AtomicWrapper">-35</Object>
+				<Object Name="StartRndVelocity" Class="AtomicWrapper" ValuesNum="3">
+					<Value>0</Value>
+					<Value>0.25</Value>
+					<Value>0</Value>
+				</Object>
+				<Object Name="StartRotation" Class="AtomicWrapper">85</Object>
+				<Object Name="StartVelocity" Class="AtomicWrapper" ValuesNum="3">
+					<Value>0</Value>
+					<Value>1.75</Value>
+					<Value>0</Value>
+				</Object>
+				<Object Name="TextureName" Class="AtomicWrapper">flameB.tif</Object>
+			</Object>
+			<Object Name="outerCore" Class="World::ParticleSystem">
+				<Object Name="AnimColor1" Class="AtomicWrapper" ValuesNum="4">
+					<Value>166</Value>
+					<Value>16</Value>
+					<Value>1</Value>
+					<Value>0</Value>
+				</Object>
+				<Object Name="AnimColor2" Class="AtomicWrapper" ValuesNum="4">
+					<Value>255</Value>
+					<Value>139</Value>
+					<Value>30</Value>
+					<Value>113</Value>
+				</Object>
+				<Object Name="AnimColor3" Class="AtomicWrapper" ValuesNum="4">
+					<Value>211</Value>
+					<Value>39</Value>
+					<Value>1</Value>
+					<Value>140</Value>
+				</Object>
+				<Object Name="AnimColor4" Class="AtomicWrapper" ValuesNum="4">
+					<Value>166</Value>
+					<Value>35</Value>
+					<Value>1</Value>
+					<Value>152</Value>
+				</Object>
+				<Object Name="AnimColor5" Class="AtomicWrapper" ValuesNum="4">
+					<Value>27</Value>
+					<Value>18</Value>
+					<Value>1</Value>
+					<Value>0</Value>
+				</Object>
+				<Object Name="AnimateColors" Class="AtomicWrapper">1</Object>
+				<Object Name="Behaviours" Class="CollectionWrapper" />
+				<Object Name="Dumping" Class="AtomicWrapper">1</Object>
+				<Object Name="EmissionElipsoid" Class="AtomicWrapper" ValuesNum="3">
+					<Value>0.65</Value>
+					<Value>0.6</Value>
+					<Value>0.65</Value>
+				</Object>
+				<Object Name="EmissionRange" Class="AtomicWrapper" ValuesNum="2">
+					<Value>35</Value>
+					<Value>35</Value>
+				</Object>
+				<Object Name="Emit" Class="AtomicWrapper">1</Object>
+				<Object Name="Enabled" Class="AtomicWrapper">1</Object>
+				<Object Name="EnergyRange" Class="AtomicWrapper" ValuesNum="2">
+					<Value>2</Value>
+					<Value>2</Value>
+				</Object>
+				<Object Name="Force" Class="AtomicWrapper" ValuesNum="3">
+					<Value>0</Value>
+					<Value>0</Value>
+					<Value>0</Value>
+				</Object>
+				<Object Name="MaxParticlesNum" Class="AtomicWrapper">4000</Object>
+				<Object Name="Name" Class="AtomicWrapper">outerCore</Object>
+				<Object Name="Position" Class="AtomicWrapper" ValuesNum="3">
+					<Value>0</Value>
+					<Value>0</Value>
+					<Value>0</Value>
+				</Object>
+				<Object Name="RandomForce" Class="AtomicWrapper" ValuesNum="3">
+					<Value>0</Value>
+					<Value>0</Value>
+					<Value>0</Value>
+				</Object>
+				<Object Name="RenderWay" Class="AtomicWrapper">1</Object>
+				<Object Name="Rotate" Class="AtomicWrapper">1</Object>
+				<Object Name="Rotation" Class="AtomicWrapper" ValuesNum="4">
+					<Value>0</Value>
+					<Value>0</Value>
+					<Value>0</Value>
+					<Value>1</Value>
+				</Object>
+				<Object Name="Scale" Class="AtomicWrapper" ValuesNum="3">
+					<Value>1</Value>
+					<Value>1</Value>
+					<Value>1</Value>
+				</Object>
+				<Object Name="SceneObjects" Class="CollectionWrapper" />
+				<Object Name="SizeGrow" Class="AtomicWrapper">0.155</Object>
+				<Object Name="SizeRange" Class="AtomicWrapper" ValuesNum="2">
+					<Value>1.2</Value>
+					<Value>1.2</Value>
+				</Object>
+				<Object Name="StartRndRotation" Class="AtomicWrapper">-15</Object>
+				<Object Name="StartRndVelocity" Class="AtomicWrapper" ValuesNum="3">
+					<Value>0</Value>
+					<Value>0</Value>
+					<Value>0</Value>
+				</Object>
+				<Object Name="StartRotation" Class="AtomicWrapper">65</Object>
+				<Object Name="StartVelocity" Class="AtomicWrapper" ValuesNum="3">
+					<Value>0</Value>
+					<Value>1</Value>
+					<Value>0</Value>
+				</Object>
+				<Object Name="TextureName" Class="AtomicWrapper">flameC.tif</Object>
+			</Object>
+		</Object>
+	</Object>
+</Object>
+<Object Name="UnitsInMeter" Class="AtomicWrapper">1</Object>
